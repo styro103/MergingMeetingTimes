@@ -23,7 +23,7 @@ public class Condenser
     
     static ArrayList <Meeting> condenseMeetingTimes(ArrayList <Meeting> mts) //Meeting Condenser, Runs in O(N*lg(N))
     {
-        mts.sort((m1, m2) -> (m1.startTime - m2.startTime)); //Merge Sort Meetings by Start Time, O(N*lg(N))
+        mts.sort((m1, m2) -> (m1.startTime - m2.startTime)); //Sort Meetings by Start Time, O(N*lg(N))
         
         for (int i=1; i<mts.size();) //Loop Through List, O(N)
         {
