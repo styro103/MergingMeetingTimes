@@ -18,13 +18,14 @@ public class Condenser
         meetings.add(new Meeting(7, 9)); //Add Meeting
         
         System.out.println("Meetings: "+meetings); //Print List of Meetings
-        meetings.sort((m1, m2) -> (m1.startTime - m2.startTime)); //Merge Sort Meetings by Start Time, O(N*lg(N))
         System.out.println("Condensed Meetings: "+condenseMeetingTimes(meetings)); //Condense and Print New Meetings List
     }
     
-    static ArrayList <Meeting> condenseMeetingTimes(ArrayList <Meeting> mts) //Meeting Condenser, Runs in O(N)
+    static ArrayList <Meeting> condenseMeetingTimes(ArrayList <Meeting> mts) //Meeting Condenser, Runs in O(N*lg(N))
     {
-        for (int i=1; i<mts.size();) //Loop Through List
+        mts.sort((m1, m2) -> (m1.startTime - m2.startTime)); //Merge Sort Meetings by Start Time, O(N*lg(N))
+        
+        for (int i=1; i<mts.size();) //Loop Through List, O(N)
         {
             if (mts.get(i).startTime<=mts.get(i-1).endTime) //If Meeting Starts When or Before Previous Ends
             {
